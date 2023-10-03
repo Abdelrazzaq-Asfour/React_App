@@ -21,7 +21,7 @@ function Main (){
       const response = await fetch(url, options);
       const result = await response.json();
       console.log(result.results)
-      setItems(result.results) 
+      setItems(result.results) //all the data that comes from the api
     
 }
 
@@ -55,7 +55,7 @@ useEffect(function (){
           const result = await response.json();
         
         let filteredItems = result.results.filter(function(item){return item.name.toLowerCase().includes(searchedValue.toLowerCase() )})
-        setItems(filteredItems); 
+        setItems(filteredItems); // the state (items) became the filtered data
     }
     return(
         <>
@@ -70,11 +70,11 @@ useEffect(function (){
               />
             <Button variant="outline-success" type='submit'>Search</Button>
           </Form>
-        <div className="container">
+        <div className="cardcontainer">
         {items.length !==0 ? items.map(function(item){
             return(
               <>
-                <CardComp image={item.images[0].baseUrl} title={item.name} price={item.price.value}/>
+                <CardComp image={item.images[0].baseUrl} title={item.name} price={item.price.value} showFavorites={true}/>
                 </>
             )
         }
