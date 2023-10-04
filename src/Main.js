@@ -13,7 +13,7 @@ function Main (){
     const options = {
       method: 'GET',
       headers: {
-        'X-RapidAPI-Key': '0f2abd4395msh6ce1c28ccac1aacp178ddbjsn9cd63c10ba80',
+        'X-RapidAPI-Key': `${process.env.REACT_APP_APIKEY}`,
         'X-RapidAPI-Host': 'apidojo-hm-hennes-mauritz-v1.p.rapidapi.com'
       }
     };
@@ -39,6 +39,10 @@ useEffect(function (){
 
 }, [])
 
+let username = "tasneem"
+console.log("welcome "+ username)
+console.log(`welcome ${username}`)
+
     async function handleSubmit (event){
         event.preventDefault()
         let searchedValue = event.target.search.value
@@ -46,7 +50,7 @@ useEffect(function (){
         const options = {
           method: 'GET',
           headers: {
-            'X-RapidAPI-Key': '0f2abd4395msh6ce1c28ccac1aacp178ddbjsn9cd63c10ba80',
+            'X-RapidAPI-Key': `${process.env.APIKEY}`,
             'X-RapidAPI-Host': 'apidojo-hm-hennes-mauritz-v1.p.rapidapi.com'
           }
         };
@@ -74,7 +78,7 @@ useEffect(function (){
         {items.length !==0 ? items.map(function(item){
             return(
               <>
-                <CardComp image={item.images[0].baseUrl} title={item.name} price={item.price.value} showFavorites={true}/>
+                <CardComp image={item.images[0].baseUrl} title={item.name} price={item.price.value} showFavorites={true} showDelete={false}/>
                 </>
             )
         }
